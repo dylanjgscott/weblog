@@ -2,7 +2,7 @@ from flask import Blueprint, render_template
 
 import sqlite3
 
-weblog = Blueprint('weblog', __name__, static_folder='static')
+weblog = Blueprint('weblog', __name__, template_folder='templates', static_folder='static')
 
 database_file = 'weblog/weblog.db'
 
