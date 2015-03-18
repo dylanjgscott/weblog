@@ -1,7 +1,0 @@
-{% extends "weblog.html" %}
-{% block content %}
-    {% for note in notes %}
-        <h2>{{ note.title }}</h2>
-        <p>{{ note.text }}</p>
-    {% endfor %}
-{% endblock %} 
