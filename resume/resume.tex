@@ -1,0 +1,127 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{casual}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{orange}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Dylan}{Scott}
+\title{Resume}                               % optional, remove / comment the line if not wanted
+\address{PO Box 302}{Newtown NSW, 2042}{Australia}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+%\phone[mobile]{+61~4~xxxx~xxxx}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+\phone[fixed]{+61~2~7903~0759}
+%\phone[fax]{+3~(456)~789~012}
+\email{dylan@dylanscott.com.au}                               % optional, remove / comment the line if not wanted
+\homepage{dylanscott.com.au}                         % optional, remove / comment the line if not wanted
+%\social[linkedin]{john.doe}                        % optional, remove / comment the line if not wanted
+%\social[twitter]{jdoe}                             % optional, remove / comment the line if not wanted
+%\social[github]{dylanjgscott}                              % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{dylan.jpg}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{$P=NP$}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Education}
+\cventry{2012--2015}{Bachelor of Computer Science and Technology (Computer Science)}{University of Sydney}{}{}{}  % arguments 3 to 6 can be left empty
+\cventry{2008--2009}{Diploma in Information Technology (Software Development)}{NSW TAFE}{}{}{}
+\cventry{2006}{Certificate IV in Information Technology (Network Management)}{NSW TAFE}{}{}{}
+
+\section{Experience}
+\cventry{2016--current}{DevOps Engineer}{Australian Broadcasting Corporation}{Ultimo}{}{Infrastructure automation engineer.\newline{}%
+Achievements:%
+\begin{itemize}%
+\item Setup continuous integration and deployment of monitoring server with AWS Cloudformation and Ansible
+\item Built and deployed tool for Amazon Web Services cost saving with Python and AWS Lambda
+\item Assisted on migration project of ABC iView to Amazon Web Services
+\item Took part in the ABC Data Hack where my team created an AI tool for Facebook activity prediction in Python
+\end{itemize}}
+\cventry{2014--2015}{Senior Network Engineer}{Australian Broadcasting Corporation}{Ultimo}{}{Technical lead on network load balancer replacement project.\newline{}%
+Achievements:%
+\begin{itemize}%
+\item Assisted with system design and documentation during architectural phase
+\item Built replacement system alongside existing system
+\item Developed system support documentation with assistance from support team
+\item Developed migration plan for migration of existing system to new system
+\item Migrated components of existing system to new system
+\item Ran training workshops with permanent staff on migrations and ongoing support
+\end{itemize}}
+\cventry{2009--2011}{Network Administrator}{Australian Broadcasting Corporation}{Ultimo}{}{Network projects including the network refresh project and DMZ replacement project.\newline{}%
+Achievements:%
+\begin{itemize}%
+\item Lead the migration of DMZ load balancer services to a new load balancer, including the ABC website
+\item Assisted in the construction of a new DMZ environment and the migration of all DMZ servers to that environment
+\item Assisted in the replacement of all access switches in the Ultimo and Southbank campuses
+\item Assisted in the replacement of all server switches in the Ultimo data centre
+\end{itemize}}
+\cventry{2007}{Network Assistant}{Australian Broadcasting Corporation}{Ultimo}{}{Assisted the data networking team with their regular duties.\newline{}%
+Achievements:%
+\begin{itemize}%
+\item Configured and installed Cisco switches
+\item Maintained Linux monitoring servers
+\item Audited network connections
+\item Patched and labelled network connections
+\end{itemize}}
+
+\clearpage
+
+\section{Awards}
+\cvitem{2015}{\textit{Microsoft Research Prize for Senior Software Development Projects} University of Sydney}
+\cvitem{2000}{\textit{High Distinction} Australian Schools Science Competition}
+\cvitem{2000}{\textit{Distinction} Australian Schools Computer Studies Competition}
+\cvitem{1999}{\textit{Distinction} Australian Schools Science Competition}
+\cvitem{1998}{\textit{Distinction} Australian Schools Science Competition}
+\cvitem{1996}{\textit{Distinction} Australian Schools Science Competition}
+
+\section{Computer skills}
+\cvdoubleitem{Low-level Networking}{TCP/IP, Ethernet, IP routing}{High-level Networking}{Load balancing, HTTP, SSL, SSH}
+\cvdoubleitem{Programming}{Python, Haskell, C/C++, Java}{Databases}{MySQL, SQLite}
+\cvdoubleitem{GNU/Linux}{Debian, Ubuntu, Arch, Gentoo}{Microsoft}{Windows, Word, Excel, Visio}
+
+\section{Interests}
+\cvitem{Cryptography}{I have written an implementation of AES in Haskell, among other things}
+\cvitem{Security}{I participated in the Cyber Security Challenge Australia in 2013}
+\cvitem{Hiking}{One of my favourite walks was a 125 kilometre from Katoomba to Mittagong over five days}
+\cvitem{Bicycling}{I have ridden the 90 kilometre Sydney to Wollongong ride in under 3.5 hours}
+\cvitem{Scuba}{I am a PADI Advanced Open Water certified diver}
+
+\section{References}
+\cvitem{}{References available on request.}
+
+\end{document}
+
+%% end of file `template.tex'.
