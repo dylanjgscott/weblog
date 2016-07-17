@@ -40,7 +40,7 @@
           },
           "Enabled": true,
           "Origins": [ {
-            "DomainName": { "Ref": "Bucket" },
+            "DomainName": { "Fn::GetAtt": [ "Bucket", "DomainName" ] },
             "Id": "diogenes",
             "S3OriginConfig": {}
           }],
