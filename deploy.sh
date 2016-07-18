@@ -10,4 +10,4 @@ trap clean EXIT
 pdflatex -output-directory ${tmp} resume/resume.tex
 cp ${tmp}/resume.pdf ${site}
 cp -R html/* ${site}
-aws s3 sync ${site} s3://${bucket}
+aws s3 sync --cache-control max-age=86400 ${site} s3://${bucket}
