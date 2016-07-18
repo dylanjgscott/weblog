@@ -1,4 +1,5 @@
 #!/bin/sh -e
+sudo pkg install tex-formats texlive-full
 bucket=weblog-bucket-8cjakz6b6pl3
 site=`mktemp -d weblog.XXXXXX`
 tmp=`mktemp -d weblog.XXXXXX`
