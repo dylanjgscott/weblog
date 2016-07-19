@@ -1,5 +1,5 @@
 #!/bin/sh -e
-sudo pkg install --yes tex-formats texlive-texmf
+sudo pkg install --yes tex-formats texlive-texmf tex-dvipsk
 bucket=weblog-bucket-8cjakz6b6pl3
 site=`mktemp -d weblog.XXXXXX`
 tmp=`mktemp -d weblog.XXXXXX`
