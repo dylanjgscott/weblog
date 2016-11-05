@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 region=ap-southeast-2
 if aws --region ${region} cloudformation describe-stacks --stack-name ${JOB_NAME}; then
   action=update-stack
