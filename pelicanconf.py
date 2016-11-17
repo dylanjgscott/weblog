@@ -1,0 +1,15 @@
+SITENAME = 'Dylan Scott'
+AUTHOR = 'Dylan Scott'
+DEFAULT_DATE = 'fs'
+SITEURL = 'https://dylanscott.com.au'
+TIMEZONE = 'Australia/Sydney'
+PAGE_PATHS = [ 'pages' ]
+ARTICLE_PATHS = [ 'articles' ]
+STATIC_PATHS = [ 'static' ]
+RELATIVE_URLS = True
+FEED_ATOM = None
+FEED_ALL_ATOM = None
+FEED_RSS = None
+GITHUB_URL = 'https://github.com/dylanjgscott/weblog'
+MENUITEMS = [ ( 'Resume', 'static/resume.pdf' ) ]
+SOCIAL = [ ( 'Github', 'https://github.com/dylanjgscott' ) ]
