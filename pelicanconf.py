@@ -7,6 +7,11 @@ TIMEZONE = 'Australia/Sydney'
 PAGE_PATHS = [ 'pages' ]
 ARTICLE_PATHS = [ 'articles' ]
 STATIC_PATHS = [ 'static' ]
+EXTRA_PATH_METADATA = {
+        'static/error.html': { 'path': 'error.html' },
+        'static/favicon.ico': { 'path': 'favicon.ico' },
+        'static/robots.txt': { 'path': 'robots.txt' },
+        }
 RELATIVE_URLS = True
 FEED_ATOM = None
 FEED_ALL_ATOM = None

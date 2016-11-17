@@ -24,7 +24,6 @@ cloudformation_update:
 
 static/resume.pdf: resume/resume.tex
 	pdflatex --output-directory resume resume/resume.tex
-	mkdir -p static
 	cp resume/resume.pdf static
 
 pelican: static/resume.pdf
