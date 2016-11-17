@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ DEFAULT_LANG }}">
+  <head>
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <h1>{{ SITENAME }}</h1>
+      <ul>
+        {% for page in pages %}
+          <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        {% for title, url in MENUITEMS %}
+          <li><a href="{{ SITEURL }}/{{ url }}">{{ title }}</a></li>
+        {% endfor %}
+        {% for title, url in SOCIAL %}
+          <li><a href="{{ url }}">{{ title }}</a></li>
+        {% endfor %}
+      </ul>
+    </header>
+    <h2>{% block subtitle %}{% endblock %}</h2>
+    {% block content %}
+    {% endblock %}
+    <footer>
+    </footer>
+  </body>
+</html>
