@@ -30,8 +30,10 @@ pelican: static/resume.pdf
 	pelican
 
 s3: pelican
+	aws s3 rm --recursive s3://${bucket}
 	aws s3 sync --cache-control max-age=86400 output s3://${bucket}
 
 clean:
 	rm -rf output
-	rm -rf static
+	rm static/resume.pdf
+	rm resume/resume.{aux,log,out,pdf}
