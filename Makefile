@@ -30,8 +30,7 @@ pelican: static/resume.pdf
 	pelican
 
 s3: pelican
-	aws s3 rm --recursive s3://${bucket}
-	aws s3 sync --cache-control max-age=86400 output s3://${bucket}
+	aws s3 sync --delete --cache-control max-age=86400 output s3://${bucket}
 
 clean:
 	rm -rf output
