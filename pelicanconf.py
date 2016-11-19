@@ -12,7 +12,6 @@ EXTRA_PATH_METADATA = {
         'static/favicon.ico': { 'path': 'favicon.ico' },
         'static/robots.txt': { 'path': 'robots.txt' },
         }
-RELATIVE_URLS = True
 FEED_ATOM = None
 FEED_ALL_ATOM = None
 FEED_RSS = None
