@@ -5,10 +5,11 @@ phases:
   install:
     commands:
       - apt -y update
-      - apt -y install texlive-full
+      - apt -y install awscli texlive-full
 
   pre_build:
-    commands: []
+    commands:
+      - aws cloudformation describe-stack-resources --stack-name weblog --query 'StackResources[?LogicalResourceId==`Bucket`].PhysicalResourceId' --output text > bucket
 
   build:
     commands:
@@ -20,6 +21,7 @@ phases:
 artifacts:
   discard-paths: yes
   files:
+    - bucket
     - resume.pdf
     - static/error.html
     - static/favicon.ico
