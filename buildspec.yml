@@ -13,16 +13,16 @@ phases:
 
   build:
     commands:
-      - pdflatex resume/resume.tex
+      - pdflatex -output-directory static resume/resume.tex
+      - rm static/resume.out static/resume.aux static/resume.log
 
   post_build:
-    commands: []
+    commands: aws s3 sync --delete static/ s3://`cat bucket`
 
 artifacts:
   discard-paths: yes
   files:
-    - bucket
-    - resume.pdf
+    - static/resume.pdf
     - static/error.html
     - static/favicon.ico
     - static/index.html
