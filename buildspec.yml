@@ -7,17 +7,15 @@ phases:
       - apt -y update
       - apt -y install awscli texlive-full
 
-  pre_build:
-    commands:
-      - aws cloudformation describe-stack-resources --stack-name weblog --query 'StackResources[?LogicalResourceId==`Bucket`].PhysicalResourceId' --output text > bucket
-
   build:
     commands:
       - pdflatex -output-directory static resume/resume.tex
-      - rm static/resume.out static/resume.aux static/resume.log
 
   post_build:
-    commands: aws s3 sync --delete static/ s3://`cat bucket`
+    commands:
+      - rm static/resume.out static/resume.aux static/resume.log
+      - aws cloudformation describe-stack-resources --stack-name weblog --query 'StackResources[?LogicalResourceId==`Bucket`].PhysicalResourceId' --output text > bucket
+      - aws s3 sync --delete static/ s3://`cat bucket`
 
 artifacts:
   discard-paths: yes
