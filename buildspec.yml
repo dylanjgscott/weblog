@@ -18,5 +18,10 @@ phases:
     commands: []
 
 artifacts:
+  discard-paths: yes
   files:
     - resume.pdf
+    - static/error.html
+    - static/favicon.ico
+    - static/index.html
+    - static/robots.txt
