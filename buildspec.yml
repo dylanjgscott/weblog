@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+
+  install:
+    commands:
+      - apt -y update
+      - apt -y install texlive-full
+
+  pre_build:
+    commands: []
+
+  build:
+    commands:
+      - pdflatex resume/resume.tex
+
+  post_build:
+    commands: []
+
+artifacts:
+  files:
+    - resume.pdf

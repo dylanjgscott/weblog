@@ -75,3 +75,13 @@ Resources:
         ViewerCertificate:
           AcmCertificateArn: arn:aws:acm:us-east-1:584259415401:certificate/2e1c3909-cfe1-48f3-b1ba-38c7b50d78d5
           SslSupportMethod: sni-only
+
+Outputs:
+
+  Bucket:
+    Description: Cloudfront disribution origin bucket
+    Value: !Ref Bucket
+
+  Distribution:
+    Description: Cloudfront distribution
+    Value: !Ref Distribution
