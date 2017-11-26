@@ -1,2 +1,6 @@
 # Weblog
-Basic website built with Pelican and hosted with Amazon Web Services Cloudfront and S3
+
+Basic website with resume
+
+Built with AWS CodeBuild
+Hosted with AWS CloudFront and S3
