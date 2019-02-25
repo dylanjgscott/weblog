@@ -10,6 +10,19 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
 
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Statement:
+          Action: s3:GetObject
+          Effect: Allow
+          Principal:
+            CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
+          Resource: !Sub ${Bucket.Arn}/*
+        Version: 2012-10-17
+
   Distribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -61,10 +74,17 @@ Resources:
             - Bucket
             - DomainName
           Id: diogenes
-          S3OriginConfig: {}
+          S3OriginConfig:
+            OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
         ViewerCertificate:
           AcmCertificateArn: arn:aws:acm:us-east-1:584259415401:certificate/51703ea6-4369-45ac-abeb-0220fdba3202
           SslSupportMethod: sni-only
+
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: Weblog
 
 Outputs:
 
