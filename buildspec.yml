@@ -14,7 +14,7 @@ phases:
   post_build:
     commands:
       - rm static/resume.out static/resume.aux static/resume.log
-      - aws cloudformation describe-stack-resources --stack-name weblog --query 'StackResources[?LogicalResourceId==`Bucket`].PhysicalResourceId' --output text > bucket
+      - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output text > bucket
       - aws s3 sync --delete static/ s3://`cat bucket`
 
 artifacts:
@@ -22,6 +22,5 @@ artifacts:
   files:
     - static/resume.pdf
     - static/error.html
-    - static/favicon.ico
     - static/index.html
     - static/robots.txt
