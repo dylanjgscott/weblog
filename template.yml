@@ -105,8 +105,8 @@ Resources:
             def add_header(response, key, value):
               response['headers'][key] = [ { 'value': value } ]
             def handler(event, context):
+              print(json.dumps(event))
               response = event['Records'][0]['cf']['response']
-              print(json.dumps(response))
               add_header(response, 'content-security-policy', "default-src 'none'; img-src 'self'; report-uri ${ReportUri}")
               add_header(response, 'expect-ct', 'enforce, max-age=86400, report-uri="${ReportUri}"')
               add_header(response, 'feature-policy', "vibrate 'none'")
@@ -114,7 +114,6 @@ Resources:
               add_header(response, 'strict-transport-security', 'includeSubDomains; max-age=31536000; preload')
               add_header(response, 'x-content-type-options', 'nosniff')
               add_header(response, 'x-frame-options', 'deny')
-              print(json.dumps(response))
               return response
         - ReportUri: !Sub https://${ReportApi}.execute-api.${AWS::Region}.amazonaws.com/${ReportApi.Stage}
       Role: !GetAtt Role.Arn
