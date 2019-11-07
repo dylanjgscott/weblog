@@ -15,7 +15,7 @@ phases:
     commands:
       - rm static/resume.out static/resume.aux static/resume.log
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Bucket`].OutputValue' --output text > bucket
-      - aws s3 sync --delete static/ s3://$(cat bucket)
+      - aws s3 sync --delete static/ s3://$(cat bucket) --cache-control max-age=315360000
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue' --output text > distribution
       - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths / /error.html /favicon.ico /index.html /resume.pdf /robots.txt
 
