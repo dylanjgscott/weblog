@@ -105,9 +105,12 @@ Resources:
             def add_header(response, key, value):
               response['headers'][key] = [ { 'value': value } ]
             def handler(event, context):
-              print(json.dumps(event))
+              request = event['Records'][0]['cf']['request']
               response = event['Records'][0]['cf']['response']
-              add_header(response, 'content-security-policy', "default-src 'none'; img-src 'self'; report-uri ${ReportUri}")
+              if request['uri'] == '/resume.pdf':
+                add_header(response, 'content-security-policy', "default-src 'none'; img-src 'self'; object-src 'self'; script-src 'unsafe-inline'; report-uri ${ReportUri}")
+              else:
+                add_header(response, 'content-security-policy', "default-src 'none'; img-src 'self'; report-uri ${ReportUri}")
               add_header(response, 'expect-ct', 'enforce, max-age=86400, report-uri="${ReportUri}"')
               add_header(response, 'feature-policy', "vibrate 'none'")
               add_header(response, 'referrer-policy', 'no-referrer')
