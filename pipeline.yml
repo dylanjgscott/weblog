@@ -41,6 +41,7 @@ Resources:
                   - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*
               - Action:
                   - cloudformation:DescribeStacks
+                  - cloudfront:CreateInvalidation
                   - s3:DeleteObject
                   - s3:GetObject
                   - s3:ListBucket
