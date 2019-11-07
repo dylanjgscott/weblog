@@ -18,11 +18,11 @@ phases:
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Bucket`].OutputValue' --output text > bucket
 
       # copy files to s3 bucket
-      - aws s3 copy static/error.html s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/html
-      - aws s3 copy static/favicon.ico s3://$(cat bucket) --cache-control max-age=31536000 --content-type image/png
-      - aws s3 copy static/index.html s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/html
-      - aws s3 copy static/resume.pdf s3://$(cat bucket) --cache-control max-age=31536000 --content-type application/pdf
-      - aws s3 copy static/robots.txt s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/plain
+      - aws s3 cp static/error.html s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/html
+      - aws s3 cp static/favicon.ico s3://$(cat bucket) --cache-control max-age=31536000 --content-type image/png
+      - aws s3 cp static/index.html s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/html
+      - aws s3 cp static/resume.pdf s3://$(cat bucket) --cache-control max-age=31536000 --content-type application/pdf
+      - aws s3 cp static/robots.txt s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/plain
 
       # get cloudfront distribution id
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue' --output text > distribution
