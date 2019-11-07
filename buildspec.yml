@@ -17,7 +17,7 @@ phases:
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Bucket`].OutputValue' --output text > bucket
       - aws s3 sync --delete static/ s3://$(cat bucket)
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue' --output text > distribution
-      - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths '*'
+      - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths / /icon.png /resume.pdf /robots.txt
 
 artifacts:
   discard-paths: yes
