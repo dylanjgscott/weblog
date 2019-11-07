@@ -162,10 +162,10 @@ Resources:
 
 Outputs:
 
-  BucketName:
-    Description: CloudFront distribution origin bucket name
+  Bucket:
+    Description: S3 bucket name
     Value: !Ref Bucket
 
-  DistributionDomainName:
-    Description: CloudFront distribution domain name
-    Value: !GetAtt CloudFrontDistribution.DomainName
+  Distribution:
+    Description: CloudFront distribution id
+    Value: !Ref CloudFrontDistribution

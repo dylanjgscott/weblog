@@ -14,8 +14,10 @@ phases:
   post_build:
     commands:
       - rm static/resume.out static/resume.aux static/resume.log
-      - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output text > bucket
-      - aws s3 sync --delete static/ s3://`cat bucket`
+      - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Bucket`].OutputValue' --output text > bucket
+      - aws s3 sync --delete static/ s3://$(cat bucket)
+      - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue' --output text > distribution
+      - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths '*'
 
 artifacts:
   discard-paths: yes
