@@ -13,16 +13,42 @@ phases:
 
   post_build:
     commands:
-      - rm static/resume.out static/resume.aux static/resume.log
-      - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Bucket`].OutputValue' --output text > bucket
-      - aws s3 sync --delete static/ s3://$(cat bucket) --cache-control max-age=315360000
-      - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue' --output text > distribution
-      - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths / /error.html /favicon.ico /index.html /resume.pdf /robots.txt
+      # get s3 bucket name
+      - > aws cloudformation describe-stacks
+            --stack-name weblog
+            --query 'Stacks[0].Outputs[?OutputKey==`Bucket`].OutputValue'
+            --output text > bucket
+      # copy files to s3 bucket
+      - > aws s3 copy static/error.html s3://$(cat bucket)
+            --cache-control max-age=31536000
+            --content-type text/html
+      - > aws s3 copy static/favicon.ico s3://$(cat bucket)
+            --cache-control max-age=31536000
+            --content-type image/png
+      - > aws s3 copy static/index.html s3://$(cat bucket)
+            --cache-control max-age=31536000
+            --content-type text/html
+      - > aws s3 copy static/resume.pdf s3://$(cat bucket)
+            --cache-control max-age=31536000
+            --content-type application/pdf
+      - > aws s3 copy static/robots.txt s3://$(cat bucket)
+            --cache-control max-age=31536000
+            --content-type text/plain
+      # get cloudfront distribution id
+      - > aws cloudformation describe-stacks
+            --stack-name weblog
+            --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue'
+            --output text > distribution
+      # create cloudfront invalidation
+      - > aws cloudfront create-invalidation
+            --distribution-id $(cat distribution)
+            --paths / /error.html /favicon.ico /index.html /resume.pdf /robots.txt
 
 artifacts:
   discard-paths: yes
   files:
-    - static/resume.pdf
     - static/error.html
+    - static/favicon.ico
     - static/index.html
+    - static/resume.pdf
     - static/robots.txt
