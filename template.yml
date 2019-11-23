@@ -86,6 +86,7 @@ Resources:
               OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
         ViewerCertificate:
           AcmCertificateArn: arn:aws:acm:us-east-1:584259415401:certificate/51703ea6-4369-45ac-abeb-0220fdba3202
+          MinimumProtocolVersion: TLSv1.2_2018
           SslSupportMethod: sni-only
 
   CloudFrontOriginAccessIdentity:
