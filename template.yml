@@ -110,6 +110,8 @@ Resources:
               response = event['Records'][0]['cf']['response']
               if request['uri'] == '/resume.pdf':
                 add_header(response, 'content-security-policy', "default-src 'none'; img-src 'self'; object-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; report-uri ${ReportUri}")
+              elif request['uri'] == '/soundboard.html':
+                add_header(response, 'content-security-policy', "default-src 'none'; frame-src https://www.youtube-nocookie.com; img-src 'self'; script-src 'self'; report-uri ${ReportUri}")
               else:
                 add_header(response, 'content-security-policy', "default-src 'none'; img-src 'self'; report-uri ${ReportUri}")
               add_header(response, 'expect-ct', 'enforce, max-age=86400, report-uri="${ReportUri}"')

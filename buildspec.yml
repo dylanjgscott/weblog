@@ -23,12 +23,14 @@ phases:
       - aws s3 cp static/index.html s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/html
       - aws s3 cp static/resume.pdf s3://$(cat bucket) --cache-control max-age=31536000 --content-type application/pdf
       - aws s3 cp static/robots.txt s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/plain
+      - aws s3 cp static/soundboard.html s3://$(cat bucket) --cache-control max-age=31536000 --content-type text/html
+      - aws s3 cp static/soundboard.js s3://$(cat bucket) --cache-control max-age=31536000 --content-type application/javascript
 
       # get cloudfront distribution id
       - aws cloudformation describe-stacks --stack-name weblog --query 'Stacks[0].Outputs[?OutputKey==`Distribution`].OutputValue' --output text > distribution
 
       # create cloudfront invalidation
-      - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths / /error.html /favicon.ico /index.html /resume.pdf /robots.txt
+      - aws cloudfront create-invalidation --distribution-id $(cat distribution) --paths / /error.html /favicon.ico /index.html /resume.pdf /robots.txt /soundboard.html /soundboard.js
 
 artifacts:
   discard-paths: yes
@@ -38,3 +40,5 @@ artifacts:
     - static/index.html
     - static/resume.pdf
     - static/robots.txt
+    - static/soundboard.html
+    - static/soundboard.js
